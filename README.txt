@@ -1,5 +1,5 @@
 项目：白姓八字与名字门户
-
+浏览成品页面：https://baixuanshu.github.io/bazi-names/
 目录说明：
 1. index.html              首页总览（汇总页）
 2. bazi-analysis.html      八字分析子页面
