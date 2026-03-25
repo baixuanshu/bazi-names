@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"><title>白姓八字与名字导航</title><style>
+:root{
+  --bg:#0f1221; --bg2:#171b31; --panel:rgba(255,255,255,.08); --panel-2:rgba(255,255,255,.04); --text:#f4f7ff; --muted:#b8c2df; --line:rgba(255,255,255,.12);
+  --gold:#f4cf7b; --wood:#8bd5a0; --water:#8ab9ff; --fire:#ff9db3; --earth:#dcb58e; --shadow:0 20px 50px rgba(0,0,0,.28);
+  --thin-font:"SF Pro Text","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --calli-font:"STLiti","STXingkai","STKaiti","KaiTi","DFKai-SB",serif;
+}
+*{box-sizing:border-box} html,body{margin:0;padding:0} html{scroll-behavior:smooth}
+body{font-family:var(--thin-font);font-weight:300;background:radial-gradient(circle at top, rgba(255,255,255,.06), transparent 26%), linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%); color:var(--text); overflow-x:hidden;letter-spacing:.1px}
+body::before{content:'';position:fixed;inset:-20%;background:radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 18%),radial-gradient(circle at 80% 0%, rgba(125,168,255,.08), transparent 20%),radial-gradient(circle at 50% 100%, rgba(255,181,210,.06), transparent 18%);animation:floatGlow 18s ease-in-out infinite;pointer-events:none;z-index:-1}
+@keyframes floatGlow{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(0,-12px,0) scale(1.03)}}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1440px;margin:0 auto;padding:20px}
+.hero,.glass,.card,.modal-box,.name-item,.portal-orb{backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow)}
+.hero,.glass,.card,.modal-box,.name-item{border-radius:24px}.hero{padding:24px;margin-bottom:18px;position:relative;overflow:hidden}.hero::after,.card::after,.portal-orb::after{content:'';position:absolute;inset:auto -20% -60% auto;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,.16), transparent 68%);opacity:.35;pointer-events:none}
+.hero h1{margin:0 0 10px;font-size:30px;letter-spacing:.5px}.desc{color:var(--muted);line-height:1.8;font-size:14px}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.nav a,.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 15px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--text);font-size:14px;cursor:pointer;transition:transform .22s ease, background .22s ease, box-shadow .22s ease}.nav a:hover,.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.1);box-shadow:0 10px 24px rgba(0,0,0,.14)} .btn.active{background:rgba(255,255,255,.14)}
+.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-bottom:18px}.glass{padding:18px}.k{color:var(--muted);font-size:13px}.v{font-size:28px;font-weight:700;margin-top:8px}
+.pattern-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{padding:18px;position:relative;overflow:hidden;transition:transform .22s ease,border-color .22s ease,background .22s ease}.card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.1)}
+.title{font-size:22px;font-weight:700;letter-spacing:.3px}.line{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.chip,.badge{display:inline-flex;align-items:center;justify-content:center;padding:6px 12px;border-radius:999px;font-size:12px;border:1px solid var(--line);background:rgba(255,255,255,.05)}
+.element-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:16px}.element-box{padding:10px 6px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);text-align:center}.element-label{font-size:12px;color:var(--muted);margin-bottom:4px}.element-num{font-size:24px;font-weight:700}.element-jin{color:var(--gold)}.element-mu{color:var(--wood)}.element-shui{color:var(--water)}.element-huo{color:var(--fire)}.element-tu{color:var(--earth)}.bottom-actions{display:flex;justify-content:space-between;gap:12px;margin-top:16px}
+.toolbar{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:12px;margin-bottom:16px} input,select{width:100%;padding:13px 15px;background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--line);border-radius:16px;font-size:14px;outline:none;transition:border-color .18s ease, transform .18s ease} input:focus,select:focus{border-color:rgba(255,255,255,.28);transform:translateY(-1px)}
+.table-wrap{overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)} table{width:100%;border-collapse:collapse;min-width:1080px;font-size:14px} th,td{padding:12px 10px;border-bottom:1px solid rgba(255,255,255,.06);text-align:left;white-space:nowrap} thead th{position:sticky;top:0;background:rgba(17,23,44,.96);z-index:1}
+.cards{display:none;gap:12px}.name-item{padding:16px;position:relative;overflow:hidden;transition:transform .2s ease,border-color .2s ease}.name-item:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.24)}.small{font-size:12px;color:var(--muted)} .note{margin-top:10px;font-size:14px;line-height:1.8;color:#eaf0ff}.score{color:#b4ffd9;font-weight:700}.meaning{font-weight:700}.reason strong{font-weight:800}
+.modal{position:fixed;inset:0;background:rgba(6,8,16,.62);display:none;align-items:center;justify-content:center;padding:16px;z-index:9999}.modal-box{width:min(1120px,100%);max-height:88vh;overflow:auto;padding:20px;animation:modalIn .22s ease}@keyframes modalIn{from{transform:translateY(8px) scale(.985);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+.modal-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px}.name-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.modal-switch{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 18px}.modal-col-title{font-size:20px;font-weight:700;margin:0 0 10px}.modal-section{display:grid;gap:16px}.modal-box .name-calligraphy{font-size:48px;font-weight:800;line-height:1.02}
+.subline{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.section-gap{margin-top:20px}
+@media (max-width:1100px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pattern-grid{grid-template-columns:1fr}.toolbar{grid-template-columns:1fr 1fr}.name-grid{grid-template-columns:1fr}.wrap{padding:14px}.hero h1{font-size:24px}}
+@media (max-width:720px){.wrap{padding:10px}.hero{padding:18px;border-radius:20px}.hero h1{font-size:22px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.toolbar{grid-template-columns:1fr}.table-wrap{display:none}.cards{display:grid}.v{font-size:22px}}
+.art{width:100%;height:120px;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.08);margin:12px 0 10px;background:rgba(255,255,255,.04)}
+.hero-mini{margin-top:8px;color:#64748b;font-size:13px;letter-spacing:.2px}
+
+body.portal-home{background:
+  radial-gradient(circle at 18% 16%, rgba(104,143,255,.22) 0, rgba(104,143,255,0) 24%),
+  radial-gradient(circle at 82% 14%, rgba(149,121,255,.18) 0, rgba(149,121,255,0) 22%),
+  radial-gradient(circle at 50% 72%, rgba(50,84,164,.18) 0, rgba(50,84,164,0) 34%),
+  linear-gradient(180deg,#040814 0%, #081226 38%, #0a1730 68%, #0a1327 100%);
+  color:#edf4ff;
+}
+body.portal-home::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:-2;background-image:
+  radial-gradient(2px 2px at 4% 10%, rgba(255,255,255,.95) 0 45%, transparent 60%),
+  radial-gradient(1.5px 1.5px at 12% 36%, rgba(255,255,255,.9) 0 45%, transparent 60%),
+  radial-gradient(2px 2px at 18% 22%, rgba(255,248,230,.95) 0 45%, transparent 60%),
+  radial-gradient(1.5px 1.5px at 26% 14%, rgba(255,255,255,.85) 0 45%, transparent 60%),
+  radial-gradient(2px 2px at 32% 38%, rgba(255,255,255,.88) 0 45%, transparent 60%),
+  radial-gradient(1.5px 1.5px at 40% 12%, rgba(255,255,255,.85) 0 45%, transparent 60%),
+  radial-gradient(2px 2px at 48% 26%, rgba(255,255,255,.92) 0 45%, transparent 60%),
+  radial-gradient(1.5px 1.5px at 54% 16%, rgba(255,255,255,.82) 0 45%, transparent 60%),
+  radial-gradient(2px 2px at 62% 36%, rgba(255,255,255,.9) 0 45%, transparent 60%),
+  radial-gradient(1.5px 1.5px at 74% 12%, rgba(255,255,255,.88) 0 45%, transparent 60%),
+  radial-gradient(2px 2px at 84% 28%, rgba(255,255,255,.92) 0 45%, transparent 60%),
+  radial-gradient(1.5px 1.5px at 92% 18%, rgba(255,255,255,.8) 0 45%, transparent 60%),
+  radial-gradient(2px 2px at 10% 68%, rgba(255,255,255,.86) 0 45%, transparent 60%),
+  radial-gradient(1.5px 1.5px at 22% 58%, rgba(255,255,255,.82) 0 45%, transparent 60%),
+  radial-gradient(2px 2px at 34% 72%, rgba(255,255,255,.88) 0 45%, transparent 60%),
+  radial-gradient(1.5px 1.5px at 44% 60%, rgba(255,255,255,.85) 0 45%, transparent 60%),
+  radial-gradient(2px 2px at 58% 78%, rgba(255,255,255,.92) 0 45%, transparent 60%),
+  radial-gradient(1.5px 1.5px at 70% 66%, rgba(255,255,255,.84) 0 45%, transparent 60%),
+  radial-gradient(2px 2px at 82% 74%, rgba(255,255,255,.9) 0 45%, transparent 60%),
+  radial-gradient(1.5px 1.5px at 94% 62%, rgba(255,255,255,.78) 0 45%, transparent 60%);
+  opacity:.92;
+}
+body.portal-home::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:-1;background:
+  radial-gradient(circle at 30% 30%, rgba(255,255,255,.14), transparent 22%),
+  radial-gradient(circle at 72% 64%, rgba(160,196,255,.12), transparent 24%),
+  radial-gradient(circle at 80% 26%, rgba(255,255,255,.14) 0 1px, transparent 3px),
+  radial-gradient(circle at 76.8% 23.7%, rgba(255,255,255,.95) 0 1.7px, transparent 3.5px),
+  radial-gradient(circle at 73.6% 21.9%, rgba(255,255,255,.95) 0 1.6px, transparent 3.5px),
+  radial-gradient(circle at 70.4% 20.4%, rgba(255,255,255,.95) 0 1.5px, transparent 3.5px),
+  radial-gradient(circle at 67.5% 22.5%, rgba(255,255,255,.95) 0 1.7px, transparent 3.5px),
+  radial-gradient(circle at 64.6% 25.8%, rgba(255,255,255,.95) 0 1.6px, transparent 3.5px),
+  radial-gradient(circle at 61.8% 29.2%, rgba(255,255,255,.95) 0 1.8px, transparent 3.7px);
+  opacity:1;
+}
+.portal-home .hero,.portal-home .portal-orb{background:rgba(8,18,39,.34);border:1px solid rgba(180,214,255,.18);box-shadow:0 24px 60px rgba(0,0,0,.34)}
+.portal-home .hero{position:relative;overflow:hidden}
+.portal-home .hero::before{content:'';position:absolute;inset:-20% auto auto -8%;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle, rgba(122,170,255,.22), transparent 68%);pointer-events:none}
+.portal-home .hero::after{content:'';position:absolute;inset:auto -10% -35% auto;width:360px;height:260px;background:radial-gradient(circle, rgba(255,255,255,.08), transparent 64%);pointer-events:none}
+.portal-home .desc{color:#c9d7f2}.home-center{min-height:calc(100vh - 40px);display:flex;flex-direction:column;justify-content:center}.orb-grid{display:grid;grid-template-columns:repeat(2,minmax(240px,320px));justify-content:center;gap:28px;margin-top:28px}.portal-orb{width:100%;aspect-ratio:1/1;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease}
+.portal-orb:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 34px 70px rgba(0,0,0,.45);border-color:rgba(203,226,255,.34)}.portal-orb:before{content:'';position:absolute;inset:12%;border-radius:50%;background:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,.04));z-index:0}.portal-orb::after{content:'';position:absolute;inset:auto;left:-10%;top:-10%;width:48%;height:48%;background:radial-gradient(circle, rgba(255,255,255,.22), transparent 68%);animation:orbFloat 7s ease-in-out infinite}
+@keyframes orbFloat{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(10px,14px,0)}}
+.orb-inner{position:relative;z-index:1;text-align:center;padding:20px}.orb-title{font-size:28px;font-weight:700;letter-spacing:1px;color:#f7fbff;text-shadow:0 2px 18px rgba(255,255,255,.14)}.orb-sub{margin-top:10px;font-size:14px;color:#cfddf5;line-height:1.7}.orb-bazi{background:linear-gradient(135deg, rgba(76,122,214,.34), rgba(136,180,255,.14))}.orb-name{background:linear-gradient(135deg, rgba(84,97,196,.28), rgba(116,148,255,.12))}
+.home-title{text-align:center;color:#f7fbff;text-shadow:0 0 28px rgba(160,196,255,.2)}.family-row{display:grid;grid-template-columns:1fr 1fr;align-items:center;margin-top:10px;color:#b8c8e7;font-size:13px;padding:0 48px}.family-right{text-align:right}.child-line{text-align:center;margin-top:8px;color:#b8c8e7;font-size:13px}
+@media (max-width:720px){.orb-grid{grid-template-columns:1fr 1fr;gap:14px}.portal-orb{min-width:0}.orb-title{font-size:20px}.orb-sub{font-size:12px}.family-row{font-size:12px}}
+</style></head><body class="portal-home"><div class="wrap home-center"><section class="hero"><h1 class="home-title">白姓 · 八字与名字</h1><div class="family-row"><div>父亲：白淞榆</div><div class="family-right">母亲：罗敏</div></div><div class="child-line">留给孩子的名字___</div></section><section class="orb-grid"><a class="portal-orb orb-bazi" href="bazi-analysis.html"><div class="orb-inner"><div class="orb-title">八字</div><div class="orb-sub">360 个时辰<br>6 个格局</div></div></a><a class="portal-orb orb-name" href="names.html"><div class="orb-inner"><div class="orb-title">名字</div><div class="orb-sub">男女名字<br>分数、五行、出处、评分理由</div></div></a></section></div></body></html>
